@@ -12,20 +12,20 @@ export default class User {
     @Column({length: 45, unique: true})
     email: string
 
-    @Column({default: false})
-    admin: boolean
-
     @Column({length:120})
     password: string
+
+    @Column({default: false})
+    admin: boolean
 
     @CreateDateColumn()
     createdAt: Date
 
     @UpdateDateColumn()
-    updateAt: Date
+    updatedAt: Date
 
     @DeleteDateColumn({nullable: true})
-    deleteAt?: Date | null | undefined
+    deleteAt: Date | null 
 
     @OneToMany(() => Schedule, (schedule) => schedule.user)
     schedules: Array<Schedule>
