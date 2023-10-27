@@ -1,16 +1,16 @@
-import { hashSync } from "bcryptjs";
 import { UserCreate, UserRead, UserReadList, UserUpdate } from "../interfaces/users.interface";
 import { userRepo } from "../repositories";
 import { usersReadSchema, usersReturnSchema } from "../schemas/users.schema";
 import { User } from "../entities";
 
-export const postuserService = async (data: UserCreate): Promise<UserRead> =>{
-    data.password = hashSync(data.password, 12);
+export const postUserService = async (data: UserCreate): Promise<UserRead> => {
+    const user: User = userRepo.create(data);
 
-    const newUser: User = await userRepo.save(data);
+    await userRepo.save(user);
 
-    return usersReturnSchema.parse(newUser);
+    return usersReturnSchema.parse(user);
 }
+
 
 export const getUsersService = async (): Promise<UserReadList> =>{
     const users: User[]= await userRepo.find();

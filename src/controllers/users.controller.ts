@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import User from "../entities/Users.entity";
-import { deleteUsersService, getUsersService, patchUsersService, postuserService } from "../services/users.service";
+import { deleteUsersService, getUsersService, patchUsersService, postUserService } from "../services/users.service";
 import { UserRead, UserReadList } from "../interfaces/users.interface";
 
 export const postUsersController = async (req: Request, res: Response): Promise<Response> => {
-    const newUser: UserRead = await postuserService(req.body);   
+    const newUser: UserRead = await postUserService(req.body);   
 
     return res.status(201).json(newUser);
 }
