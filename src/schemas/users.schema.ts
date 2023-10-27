@@ -13,7 +13,7 @@ export const usersSchema = z.object({
 
 export const usersCreateSchema = usersSchema.omit({id: true, createdAt: true, updatedAt: true, deletedAt: true})
 
-export const usersUpdateSchema = usersCreateSchema.partial();
+export const usersUpdateSchema = usersCreateSchema.partial().omit({admin: true});
 
 export const usersReturnSchema = usersSchema.omit({password: true});
 
