@@ -19,14 +19,14 @@ export default class User {
     @Column({default: false})
     admin: boolean
 
-    @CreateDateColumn()
-    createdAt: Date
+    @CreateDateColumn({type: "date"})
+    createdAt: string
 
-    @UpdateDateColumn()
-    updatedAt: Date
+    @UpdateDateColumn({type: "date"})
+    updatedAt: string
 
-    @DeleteDateColumn({nullable: true})
-    deleteAt: Date | null 
+    @DeleteDateColumn({nullable: true, type: "date"})
+    deleteAt: string | null 
 
     @OneToMany(() => Schedule, (schedule) => schedule.user)
     schedules: Array<Schedule>
