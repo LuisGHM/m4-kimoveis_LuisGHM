@@ -1,5 +1,5 @@
 import { Category } from "../entities";
-import { CategoryCreate } from "../interfaces/category.interface";
+import { CategoryCreate, CategoryRead } from "../interfaces/category.interface";
 import { categoryRepo } from "../repositories";
 
 export const postCategoryService = async (data: CategoryCreate): Promise<Category> =>{
@@ -7,3 +7,10 @@ export const postCategoryService = async (data: CategoryCreate): Promise<Categor
     
     return newCategory;
 }
+
+export const getCategoryService = async (): Promise<CategoryRead> =>{
+    const newCategory: CategoryRead = await categoryRepo.find();
+    
+    return newCategory;
+}
+
