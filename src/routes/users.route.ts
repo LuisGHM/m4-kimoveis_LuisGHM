@@ -6,10 +6,11 @@ import { usersCreateSchema, usersUpdateSchema } from "../schemas/users.schema";
 import { existUserMiddleware } from "../middlewares/existUser.middleware";
 import { validateTokenMiddleware } from "../middlewares/validateToken.middleware";
 import { validateAcessMiddleware } from "../middlewares/validateAcess.middleware";
+import { validatePermissionsMiddleware } from "../middlewares/validatePermissions.middleware";
 
 export const usersRoute: Router = Router();
 
 usersRoute.post("/", validateBody(usersCreateSchema), existEmail,  postUsersController);
 usersRoute.get("/", validateTokenMiddleware, validateAcessMiddleware, getUsersController);
-usersRoute.patch("/:id", validateBody(usersUpdateSchema), existUserMiddleware, patchUsersController);
+usersRoute.patch("/:id", validateBody(usersUpdateSchema), validateTokenMiddleware, existUserMiddleware, validatePermissionsMiddleware, existUserMiddleware, patchUsersController);
 usersRoute.delete("/:id", existUserMiddleware, deleteUsersController);
