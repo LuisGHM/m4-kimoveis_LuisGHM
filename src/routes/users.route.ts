@@ -13,4 +13,4 @@ export const usersRoute: Router = Router();
 usersRoute.post("/", validateBody(usersCreateSchema), existEmail,  postUsersController);
 usersRoute.get("/", validateTokenMiddleware, validateAcessMiddleware, getUsersController);
 usersRoute.patch("/:id", validateBody(usersUpdateSchema), validateTokenMiddleware, existUserMiddleware, validatePermissionsMiddleware, existUserMiddleware, patchUsersController);
-usersRoute.delete("/:id", existUserMiddleware, deleteUsersController);
+usersRoute.delete("/:id", validateTokenMiddleware, existUserMiddleware,validateAcessMiddleware, existUserMiddleware, deleteUsersController);
