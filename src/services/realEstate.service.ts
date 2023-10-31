@@ -11,9 +11,14 @@ export const postRealEStateService = async (data: RealEstateCreate): Promise<Rea
     const address: Address = await addressRepo.save(data.address);
     
     const realEstate: RealEstate = await realEstateRepo.save({...data, category});
-
-    console.log(realEstate);
-    
   
     return realEstate;
+}
+
+
+
+export const getRealEStateService = async (): Promise<RealEstate[]> => {
+    const realEstates: RealEstate[] = await realEstateRepo.find({relations:{ address: true}})
+
+    return realEstates;
 }
