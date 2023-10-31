@@ -17,15 +17,15 @@ export default class RealEstate {
     @Column()
     size: number
 
-    @CreateDateColumn()
-    createdAt: Date
+    @CreateDateColumn({type: "date"})
+    createdAt: string
 
-    @UpdateDateColumn()
-    updateAt: Date
+    @UpdateDateColumn({type: "time"})
+    updatedAt: string
 
     @OneToOne(() => Address, (address) => address.realEstate)
     @JoinColumn()
-    addresses: Address
+    address: Address
 
     @ManyToOne(() => Category, (category) => category.realEstate)
     category: Category

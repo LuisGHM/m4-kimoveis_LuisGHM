@@ -21,6 +21,6 @@ export default class Address{
     @Column({length: 2})
     state: string
 
-    @OneToOne(() => RealEstate, (realEstate) => realEstate.addresses)
+    @OneToOne(() => RealEstate, (realEstate) => realEstate.address)
     realEstate: RealEstate
 }
