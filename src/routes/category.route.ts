@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCategoryController, postCategoryController } from "../controllers/category.controller";
+import { getCategoryByIdController, getCategoryController, postCategoryController } from "../controllers/category.controller";
 import { validateBody } from "../middlewares/validateBody.middleware";
 import { categoryCreateSchema } from "../schemas/category.schema";
 import { existCategoryNameMiddleware } from "../middlewares/existCategoryName.middleware";
@@ -10,3 +10,4 @@ export const categoryRoute: Router = Router()
 
 categoryRoute.post("/", validateBody(categoryCreateSchema), validateTokenMiddleware, validateAcessMiddleware, existCategoryNameMiddleware, postCategoryController);
 categoryRoute.get("/", getCategoryController);
+categoryRoute.get("/:id/realEstate", getCategoryByIdController);
