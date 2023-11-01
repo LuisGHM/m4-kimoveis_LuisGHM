@@ -7,7 +7,7 @@ export default class Schedule {
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @Column({type: Date})
+    @Column({type: "date"})
     date: string
 
     @Column({type: "time"})

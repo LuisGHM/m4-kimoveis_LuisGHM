@@ -20,7 +20,7 @@ export default class RealEstate {
     @CreateDateColumn({type: "date"})
     createdAt: string
 
-    @UpdateDateColumn({type: "time"})
+    @UpdateDateColumn({type: "date"})
     updatedAt: string
 
     @OneToOne(() => Address, (address) => address.realEstate)
