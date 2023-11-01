@@ -9,7 +9,6 @@ export const postCategoryController = async (req: Request, res: Response): Promi
     return res.status(201).json(newCategory);
 }
 
-
 export const getCategoryController = async (req: Request, res: Response): Promise<Response> => {
     const categories: CategoryRead = await getCategoryService();
 

@@ -30,6 +30,6 @@ export default class RealEstate {
     @ManyToOne(() => Category, (category) => category.realEstate)
     category: Category
 
-    @OneToMany(() => Schedule, (schedule) => schedule.realEstates)
+    @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
     schedules: Array<Schedule>
 }
