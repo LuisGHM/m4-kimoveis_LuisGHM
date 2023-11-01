@@ -3,8 +3,6 @@ import AppError from "../errors/App.error";
 
 export const verifyBusinessHourMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     const date = new Date(req.body.date).getDay();
-
-    console.log(date);
     
     if((date === 5) || (date === 6)){
         throw new AppError('Invalid date, work days are monday to friday', 400);

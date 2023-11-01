@@ -8,7 +8,7 @@ export const usersSchema = z.object({
     admin: z.boolean().default(false),
     createdAt: z.string(),
     updatedAt: z.string(),
-    deleteAt: z.string().nullable().default(null)
+    deletedAt: z.string().nullable().default(null)
 });
 
 export const usersCreateSchema = usersSchema.omit({id: true, createdAt: true, updatedAt: true, deletedAt: true})

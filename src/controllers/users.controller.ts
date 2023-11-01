@@ -4,10 +4,7 @@ import { deleteUsersService, getUsersService, patchUsersService, postUserService
 import { UserRead, UserReadList } from "../interfaces/users.interface";
 
 export const postUsersController = async (req: Request, res: Response): Promise<Response> => {
-    const newUser: UserRead = await postUserService(req.body);   
-
-    console.log(newUser);
-    
+    const newUser: UserRead = await postUserService(req.body);    
 
     return res.status(201).json(newUser);
 }
